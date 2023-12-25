@@ -487,24 +487,26 @@ class RootPage extends StatelessWidget {
                             height: 0,
                           ),
                         )),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 5),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                         ),
-                        child: Row(
-                          children: List.generate(
-                            3,
-                            (index) {
-                              return const Row(
-                                children: <Widget>[
-                                  //START HERE
-                                ],
-                              );
-                            },
-                          ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(children: <Widget>[
+                            _buildInterestContainer(
+                              imagePath: "assets/images/haircut.png", 
+                              text: "Haircut",),
+                            _buildInterestContainer(
+                              imagePath: "assets/images/facial.png", 
+                              text: "Facial",),
+                            _buildInterestContainer(
+                              imagePath: "assets/images/nails.png", 
+                              text: "nails",),
+                          ]),
                         ),
                       ),
                     ),
@@ -512,7 +514,7 @@ class RootPage extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
 
               //NEARBY OFFERS
               Padding(
@@ -567,7 +569,7 @@ class RootPage extends StatelessWidget {
                             (index) {
                               return const Row(
                                 children: <Widget>[
-                                  //START HERE
+                                  
                                 ],
                               );
                             },
@@ -597,28 +599,28 @@ class RootPage extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.explore,
-                color: Colors.amber,
+                color: Color.fromRGBO(173, 179, 188, 1),
               ),
               label: "Nearby",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.calendar_month,
-                color: Colors.amber,
+                color: Color.fromRGBO(173, 179, 188, 1),
               ),
               label: "Appointment",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.inbox,
-                color: Colors.amber,
+                color: Color.fromRGBO(173, 179, 188, 1),
               ),
               label: "Inbox",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
-                color: Colors.amber,
+                color: Color.fromRGBO(173, 179, 188, 1),
               ),
               label: "Profile",
             ),
@@ -626,3 +628,37 @@ class RootPage extends StatelessWidget {
         ));
   }
 }
+Widget _buildInterestContainer({required String imagePath, required String text}) {
+  return Container(
+    margin: const EdgeInsets.all(8),
+    width: 146,
+    height: 56,
+    decoration: BoxDecoration(
+      color:const Color.fromRGBO(225, 245, 250, 1),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          imagePath,
+          width: 32, // Set width as per your requirement
+          height: 32, // Set height as per your requirement
+          fit: BoxFit.cover,
+        ),
+        const SizedBox(width: 8),
+        Text(
+          text,
+          style: TextStyle(
+            color: const Color.fromRGBO(255, 214, 0, 1),
+            fontSize: 14,
+            fontFamily: 'Manrope',
+            fontWeight: FontWeight.w600,
+            height: 0,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
